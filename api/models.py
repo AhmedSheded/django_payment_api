@@ -23,23 +23,23 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name = _('user')
         verbose_name_plural = _('users')
 
-        def get_full_name(self):
-            """
-            returns the firest_name plus the last_name with the space in between.
-            """
-            full_name = '%s %s' % (self.first_name, self.last_name)
-            return full_name.strip()
+    def get_full_name(self):
+        """
+        returns the firest_name plus the last_name with the space in between.
+        """
+        full_name = '%s %s' % (self.first_name, self.last_name)
+        return full_name.strip()
 
-        def get_short_name(self):
-            """
-            return short name for a user
-            """
-            return self.first_name
+    def get_short_name(self):
+        """
+        return short name for a user
+        """
+        return self.first_name
 
-        def email_user(self, subject, message, from_email=None, **kwargs):
-            """
-            sends an email to this user
-            """
-            send_mail(subject, message, from_email, [self.email], **kwargs)
+    def email_user(self, subject, message, from_email=None, **kwargs):
+        """
+        sends an email to this user
+        """
+        send_mail(subject, message, from_email, [self.email], **kwargs)
 
 
